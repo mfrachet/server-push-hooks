@@ -5,6 +5,8 @@ Use [socket.io](https://socket.io/) using React Hooks (React v16.7+)
 
 # Usage
 
+_Only available on github for now. use-socket seems to be used on npm_
+
 ```
 $ yarn add mfrachet/use-socket
 ```
