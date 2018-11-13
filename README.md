@@ -1,7 +1,12 @@
+[![Build Status](https://travis-ci.org/mfrachet/use-socket.svg?branch=master)](https://travis-ci.org/mfrachet/use-socket)
+[![Coverage Status](https://coveralls.io/repos/github/mfrachet/use-socket/badge.svg?branch=master)](https://coveralls.io/github/mfrachet/use-socket?branch=master)
+
+Use [socket.io](https://socket.io/) using React Hooks (React v16.7+)
+
 # Usage
 
 ```
-$ yarn add use-socket
+$ yarn add mfrachet/use-socket
 ```
 
 # In your code
