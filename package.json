@@ -1,0 +1,57 @@
+{
+  "name": "use-socket",
+  "version": "0.0.1",
+  "description": "useSocket",
+  "main": "./lib/index.js",
+  "author": "Marvin Frachet <marvin.frachet@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://github.com/mfrachet/use-socket",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mfrachet/use-socket"
+  },
+  "keywords": [
+    "react",
+    "context"
+  ],
+  "scripts": {
+    "format": "prettier-eslint --write \"src/**/*.js\"",
+    "test": "jest --coverage",
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-preset-minify": "^0.4.0",
+    "coveralls": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.6.0",
+    "prettier": "^1.11.1",
+    "prettier-eslint-cli": "^4.7.1",
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0",
+    "rollup": "^0.67.0",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-uglify": "^6.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.0"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./setup/jest-setup.js"
+    ]
+  },
+  "dependencies": {
+    "socket.io-client": "^2.1.1"
+  }
+}
