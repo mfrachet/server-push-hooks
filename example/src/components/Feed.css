@@ -1,0 +1,38 @@
+.feed {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.feed-item {
+  padding: 20px;
+  border-bottom: 1px solid #dddddd;
+  animation: appear 0.3s ease-in-out;
+}
+
+.feed-author {
+  font-weight: bold;
+}
+
+.feed-authorname {
+  color: #666666;
+}
+
+.feed-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    margin-top: -10px;
+  }
+
+  to {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
