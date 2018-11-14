@@ -5,3 +5,4 @@ node_modules
 coverage
 .*
 yarn.lock
+example/

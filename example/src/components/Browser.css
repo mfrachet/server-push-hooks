@@ -1,0 +1,68 @@
+/* The browser window */
+.browser {
+  border: 3px solid #dddddd;
+  border-radius: 5px;
+  background-color: #efefef;
+  height: calc(100vh - 46px);
+  overflow: auto;
+}
+
+/* Container for columns and the top "toolbar" */
+.browser-row {
+  padding: 10px;
+  display: flex;
+  background: #dddddd;
+}
+
+/* Create three unequal columns that floats next to each other */
+.browser-column {
+  float: left;
+}
+
+.browser-middle {
+  flex: 1;
+  margin: 0 20px;
+}
+
+/* Clear floats after the columns */
+.browser-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Three dots */
+.browser-dot {
+  margin-top: 4px;
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+/* Style the input field */
+input.browser-input {
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  background-color: white;
+  margin-top: -8px;
+
+  color: #666;
+  padding: 5px;
+}
+
+/* Three bars (hamburger menu) */
+.browser-bar {
+  width: 17px;
+  height: 3px;
+  background-color: #aaa;
+  margin: 3px 0;
+  display: block;
+}
+
+/* Page content */
+.browser-content {
+}
