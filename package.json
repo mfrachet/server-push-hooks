@@ -1,15 +1,15 @@
 {
-  "name": "use-socket",
+  "name": "use-socketio",
   "version": "0.0.1",
-  "description": "useSocket",
+  "description": "React hooks to use with https://socket.io/",
   "main": "./lib/index.js",
   "author": "Marvin Frachet <marvin.frachet@gmail.com>",
   "license": "MIT",
   "private": false,
-  "homepage": "https://github.com/mfrachet/use-socket",
+  "homepage": "https://github.com/mfrachet/use-socketio",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mfrachet/use-socket"
+    "url": "https://github.com/mfrachet/use-socketio"
   },
   "keywords": [
     "react",

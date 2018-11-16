@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSocket } from "use-socket";
+import { useSocket } from "use-socketio";
 import { Cols, Col } from "./Cols";
 
 import "./Feed.css";

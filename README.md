@@ -1,20 +1,18 @@
-[![Build Status](https://travis-ci.org/mfrachet/use-socket.svg?branch=master)](https://travis-ci.org/mfrachet/use-socket)
-[![Coverage Status](https://coveralls.io/repos/github/mfrachet/use-socket/badge.svg?branch=master)](https://coveralls.io/github/mfrachet/use-socket?branch=master)
+[![Build Status](https://travis-ci.org/mfrachet/use-socketio.svg?branch=master)](https://travis-ci.org/mfrachet/use-socketio)
+[![Coverage Status](https://coveralls.io/repos/github/mfrachet/use-socketio/badge.svg?branch=master)](https://coveralls.io/github/mfrachet/use-socketio?branch=master)
 
 Use [socket.io](https://socket.io/) using React Hooks (React v16.7+)
 
 # Usage
 
-_Only available on github for now. use-socket seems to be used on npm_
-
 ```
-$ yarn add mfrachet/use-socket
+$ yarn add use-socketio
 ```
 
 # In your code
 
 ```javascript
-import { ClientSocket, useSocket } from "use-socket";
+import { ClientSocket, useSocket } from "use-socketio";
 
 const Hello = () => {
   /**

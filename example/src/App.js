@@ -1,5 +1,5 @@
 import React from "react";
-import { ClientSocket } from "use-socket";
+import { ClientSocket } from "use-socketio";
 import { Browser } from "./components/Browser";
 import { Navbar } from "./components/Navbar";
 import { Profile } from "./components/Profile";

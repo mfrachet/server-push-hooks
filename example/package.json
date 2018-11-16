@@ -1,13 +1,13 @@
 {
-  "name": "use-socket-example",
+  "name": "use-socketio-example",
   "version": "0.1.0",
-  "homepage": "https://mfrachet.github.io/use-socket",
+  "homepage": "https://mfrachet.github.io/use-socketio",
   "private": true,
   "dependencies": {
     "react": "16.7.0-alpha.0",
     "react-dom": "16.7.0-alpha.0",
     "react-scripts": "2.1.1",
-    "use-socket": "mfrachet/use-socket"
+    "use-socketio": "mfrachet/use-socketio"
   },
   "scripts": {
     "start": "react-scripts start",
