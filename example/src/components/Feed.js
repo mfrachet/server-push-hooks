@@ -5,7 +5,7 @@ import { Cols, Col } from "./Cols";
 import "./Feed.css";
 
 export const Feed = () => {
-  const [nextFeed] = useSocket("tweet", nextFeed => setFeeds(feeds));
+  const [nextFeed] = useSocket("tweet");
   const [feeds, setFeeds] = useState([]);
 
   useEffect(

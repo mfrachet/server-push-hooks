@@ -1,16 +1,16 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "./context";
 
-export function useSocket(eventKey) {
+export function useSocket(eventKey, callback) {
   const socket = useContext(Context);
 
-  const [value, setValue] = useState();
-
   useEffect(() => {
-    socket.on(eventKey, setValue);
+    if (eventKey && callback) {
+      socket.on(eventKey, callback);
 
-    return () => socket.removeListener(eventKey, setValue);
+      return () => socket.removeListener(eventKey, setValue);
+    }
   }, []);
 
-  return [value, socket];
+  return socket;
 }

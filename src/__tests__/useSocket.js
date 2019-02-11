@@ -1,17 +1,16 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useSocket } from "../useSocket";
 
 jest.mock("react");
 
 describe("useStore", () => {
-  let setMock;
   let socketMock;
+  let callback;
 
   beforeEach(() => {
+    callback = jest.fn();
     socketMock = { on: jest.fn() };
-    setMock = jest.fn();
     useContext.mockImplementation(() => socketMock);
-    useState.mockImplementation(() => ["value", setMock]);
     useEffect.mockImplementation(fn => fn());
   });
 
@@ -23,17 +22,30 @@ describe("useStore", () => {
     useSocket("something");
 
     expect(useContext).toHaveBeenCalled();
-    expect(useState).toHaveBeenCalled();
     expect(useEffect).toHaveBeenCalled();
   });
 
   it("should have called the socket handler with the change state method", () => {
-    useSocket("something");
+    useSocket("something", callback);
 
-    expect(socketMock.on).toHaveBeenCalledWith("something", setMock);
+    expect(socketMock.on).toHaveBeenCalledWith("something", callback);
   });
 
   it("should have return the socket value and the socket himself", () => {
-    expect(useSocket("something")).toEqual(["value", socketMock]);
+    expect(useSocket("something")).toEqual(socketMock);
+  });
+
+  it("shouldnt have called the socketMock on when no event key", () => {
+    const socket = useSocket();
+
+    expect(socket).toEqual(socketMock);
+    expect(socket.on).not.toHaveBeenCalled();
+  });
+
+  it("shouldnt have called the socketMock on when no callback passed", () => {
+    const socket = useSocket("test");
+
+    expect(socket).toEqual(socketMock);
+    expect(socket.on).not.toHaveBeenCalled();
   });
 });
