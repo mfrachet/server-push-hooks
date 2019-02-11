@@ -8,7 +8,7 @@ export function useSocket(eventKey, callback) {
     if (eventKey && callback) {
       socket.on(eventKey, callback);
 
-      return () => socket.removeListener(eventKey, setValue);
+      return () => socket.removeListener(eventKey, callback);
     }
   }, []);
 

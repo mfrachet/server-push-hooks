@@ -1,29 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSocket } from "use-socketio";
 import { Cols, Col } from "./Cols";
 
 import "./Feed.css";
 
 export const Feed = () => {
-  const [nextFeed] = useSocket("tweet");
   const [feeds, setFeeds] = useState([]);
 
-  useEffect(
-    () => {
-      if (nextFeed) {
-        if (feeds.length === 5) {
-           setFeeds([nextFeed, ...feeds.slice(0, feeds.length - 1)]);
-        } else {
-          setFeeds([nextFeed, ...feeds]);
-        }
-      }
-    },
-    [nextFeed]
-  );
+  useSocket("tweet", next => console.log(next) || setFeeds([...feeds, next]));
 
   return (
     <div className="feed">
-    {!feeds.length && <div style={{textAlign: 'center', backgroundColor: '#efefef'}}>Waiting for tweets...</div>}
+      {!feeds.length && (
+        <div style={{ textAlign: "center", backgroundColor: "#efefef" }}>
+          Waiting for tweets...
+        </div>
+      )}
       {feeds.map(feed => (
         <div className="feed-item" key={feed.id}>
           <Cols>
