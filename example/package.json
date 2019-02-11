@@ -4,10 +4,8 @@
   "homepage": "https://mfrachet.github.io/use-socketio",
   "private": true,
   "dependencies": {
-    "react": "16.7.0-alpha.0",
-    "react-dom": "16.7.0-alpha.0",
     "react-scripts": "2.1.1",
-    "use-socketio": "mfrachet/use-socketio"
+    "use-socketio": "file:../"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,6 +24,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.0.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
   }
 }

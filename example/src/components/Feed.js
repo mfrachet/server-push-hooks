@@ -5,17 +5,17 @@ import { Cols, Col } from "./Cols";
 import "./Feed.css";
 
 export const Feed = () => {
-  const [nextFeed] = useSocket("tweet");
+  const [nextFeed] = useSocket("tweet", nextFeed => setFeeds(feeds));
   const [feeds, setFeeds] = useState([]);
 
   useEffect(
     () => {
       if (nextFeed) {
         if (feeds.length === 5) {
-          return setFeeds([nextFeed, ...feeds.slice(0, feeds.length - 1)]);
+           setFeeds([nextFeed, ...feeds.slice(0, feeds.length - 1)]);
+        } else {
+          setFeeds([nextFeed, ...feeds]);
         }
-
-        return setFeeds([nextFeed, ...feeds]);
       }
     },
     [nextFeed]
