@@ -10,7 +10,7 @@ export function useSocket(eventKey, callback) {
 
       return () => socket.removeListener(eventKey, callback);
     }
-  }, []);
+  });
 
   return socket;
 }
