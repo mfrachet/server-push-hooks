@@ -7,7 +7,9 @@ export function useSocket(eventKey) {
   const [value, setValue] = useState();
 
   useEffect(() => {
-    socket.on(eventKey, setValue)
+    socket.on(eventKey, setValue);
+
+    return () => socket.removeListener(eventKey, setValue);
   }, []);
 
   return [value, socket];
