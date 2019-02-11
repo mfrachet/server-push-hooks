@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "react-scripts": "2.1.1",
-    "use-socketio": "file:../"
+    "use-socketio": "mfrachet/use-socketio"
   },
   "scripts": {
     "start": "react-scripts start",
