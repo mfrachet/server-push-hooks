@@ -9584,8 +9584,9 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-"use-socketio@file:..":
+use-socketio@mfrachet/use-socketio:
   version "0.0.1"
+  resolved "https://codeload.github.com/mfrachet/use-socketio/tar.gz/8bef099c6ceb8860790aad5be68488281fdc2c22"
   dependencies:
     socket.io-client "^2.1.1"
 
