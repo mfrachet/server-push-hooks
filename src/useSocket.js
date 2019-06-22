@@ -15,7 +15,7 @@ export function useSocket(eventKey, callback) {
       socket.on(eventKey, socketHandler);
       return () => socket.removeListener(eventKey, socketHandler);
     }
-  }, ["eventKey"]);
+  }, [eventKey]);
 
   return socket;
 }
