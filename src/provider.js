@@ -6,7 +6,7 @@ export default class Provider extends Component {
   constructor(props) {
     super(props);
 
-    this.socket = io(props.url);
+    this.socket = io(props.url, props.opts || {});
   }
 
   render() {
