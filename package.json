@@ -1,0 +1,53 @@
+{
+  "name": "use-socketio",
+  "version": "2.0.0",
+  "description": "React hooks for https://socket.io/",
+  "main": "./lib/index.js",
+  "author": "Marvin Frachet <marvin.frachet@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://github.com/mfrachet/use-socketio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mfrachet/use-socketio"
+  },
+  "keywords": [
+    "react",
+    "context"
+  ],
+  "scripts": {
+    "e2e:ci": "cypress run",
+    "e2e": "cypress open",
+    "build": "yarn lint && tsc --outDir lib",
+    "format": "prettier --write './src/**/*.tsx'",
+    "lint": "tslint -c tslint.json 'src/**/**'",
+    "check:lint": "tsc --noEmit && yarn lint",
+    "start": "parcel example/index.html",
+    "start:test-server": "node ./example/server",
+    "release": "yarn check:lint && yarn build && npm publish"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/socket.io-client": "^1.4.32",
+    "cypress": "^3.8.1",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "socket.io": "^2.3.0",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.1.0",
+    "typescript": "^3.7.4"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "socket.io-client": "^2.3.0"
+  }
+}
