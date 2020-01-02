@@ -1,1 +1,6 @@
 example
+cypress
+src
+node_modules
+dist
+.cache
