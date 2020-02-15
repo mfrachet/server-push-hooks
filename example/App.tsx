@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { SocketIOProvider, useLastMessage, useSocket } from "../src";
+import { SocketIOProvider, useLastMessage, useSocket } from "../lib/io";
+import { ServerSent } from "./ServerSent";
 
 export interface ITweet {
   text: string;
@@ -90,6 +91,7 @@ const Messages = () => {
 
 export const App = () => (
   <SocketIOProvider url="http://localhost:3000">
+    <ServerSent />
     <LastMessage />
     <Messages />
   </SocketIOProvider>

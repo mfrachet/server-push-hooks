@@ -1,5 +1,19 @@
-const http = require("http").createServer();
+const http = require("http");
 const io = require("socket.io")(http);
+
+const serverSentEventsHandler = (req, res) => {
+  res.writeHead(200, {
+    "Content-Type": "text/event-stream",
+    "Access-Control-Allow-Origin": "*"
+  });
+
+  const data = { hello: "world" };
+
+  res.write(`data: ${JSON.stringify(data)}`);
+  res.write("\n\n");
+};
+
+const server = http.createServer(serverSentEventsHandler);
 
 io.on("connection", function(socket) {
   socket.on("one-last-message", () => {
@@ -19,6 +33,6 @@ io.on("connection", function(socket) {
   });
 });
 
-http.listen(3000, function() {
+server.listen(3000, function() {
   console.log("listening on *:3000");
 });
