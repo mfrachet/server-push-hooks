@@ -4,10 +4,6 @@ context("Socket.io", () => {
   });
 
   describe("Last message section", () => {
-    afterEach(() => {
-      // cy.get("[data-cy=clear-last-message]").click();
-    });
-
     it("should be an empty section at the beginning", () => {
       cy.get("[data-cy=last-message]")
         .invoke("text")

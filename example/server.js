@@ -1,24 +1,15 @@
-const http = require("http").createServer();
+const app = require("express")();
+const http = require("http").createServer(app);
 const io = require("socket.io")(http);
+const cors = require("cors");
 
-io.on("connection", function(socket) {
-  socket.on("one-last-message", () => {
-    socket.emit("last-messages", "This is one new message");
-  });
+const startSocketIo = require("./socketio/socketio-server");
+const sseRequestHandler = require("./sse/sse-server");
 
-  socket.on("three-last-messages", () => {
-    socket.emit("last-messages", "This is one new message");
-    socket.emit("last-messages", "This is a second new message");
-    socket.emit("last-messages", "This is a third new message");
-  });
+app.use(cors());
+app.get("/last-sse", sseRequestHandler);
+app.get("/all-sse", sseRequestHandler);
 
-  socket.on("three-messages", () => {
-    socket.emit("new-message", "This is one new message");
-    socket.emit("new-message", "This is a second new message");
-    socket.emit("new-message", "This is a third new message");
-  });
-});
+startSocketIo(io);
 
-http.listen(3000, function() {
-  console.log("listening on *:3000");
-});
+http.listen(3000, () => console.log("listening on *:3000"));
