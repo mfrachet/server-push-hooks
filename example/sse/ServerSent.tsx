@@ -10,7 +10,7 @@ export const ServerSent = () => {
 
       <h4>Last message from SSE</h4>
 
-      {data && <p data-cy="latest-sse-name">{data.name}</p>}
+      {<p data-cy="last-sse-message">{data && data.name}</p>}
     </section>
   );
 };
