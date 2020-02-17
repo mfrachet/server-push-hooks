@@ -1,26 +1,16 @@
 import React from "react";
+import { useLastSSE } from "../../lib/sse";
 
 export const ServerSent = () => {
-  const eventSourceRef = React.useRef(
-    new EventSource("http://localhost:3000/server-sent")
+  const { data, error } = useLastSSE();
+
+  return (
+    <section>
+      <h3>SSE events</h3>
+
+      <h4>Last message from SSE</h4>
+
+      {data && <p data-cy="latest-sse-name">{data.name}</p>}
+    </section>
   );
-
-  React.useEffect(() => {
-    eventSourceRef.current.onmessage = e => {
-      // tslint:disable-next-line:no-console
-      console.log("onmessage", e);
-    };
-
-    eventSourceRef.current.onopen = () => {
-      // tslint:disable-next-line:no-console
-      console.log("Opened");
-    };
-
-    eventSourceRef.current.onerror = () => {
-      // tslint:disable-next-line:no-console
-      console.error("Error !");
-    };
-  }, []);
-
-  return <div>Hello server sent</div>;
 };
