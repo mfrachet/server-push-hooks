@@ -1,7 +1,9 @@
 import React from "react";
 
 export const ServerSent = () => {
-  const eventSourceRef = React.useRef(new EventSource("http://localhost:3000"));
+  const eventSourceRef = React.useRef(
+    new EventSource("http://localhost:3000/server-sent")
+  );
 
   React.useEffect(() => {
     eventSourceRef.current.onmessage = e => {

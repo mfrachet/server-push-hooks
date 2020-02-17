@@ -1,19 +1,18 @@
-const http = require("http");
+const app = require("express")();
+const http = require("http").createServer(app);
 const io = require("socket.io")(http);
+const cors = require("cors");
 
-const serverSentEventsHandler = (req, res) => {
-  res.writeHead(200, {
-    "Content-Type": "text/event-stream",
-    "Access-Control-Allow-Origin": "*"
-  });
+app.use(cors());
+
+app.get("/server-sent", function(req, res) {
+  res.set("Content-Type", "text/event-stream");
 
   const data = { hello: "world" };
 
   res.write(`data: ${JSON.stringify(data)}`);
   res.write("\n\n");
-};
-
-const server = http.createServer(serverSentEventsHandler);
+});
 
 io.on("connection", function(socket) {
   socket.on("one-last-message", () => {
@@ -33,6 +32,6 @@ io.on("connection", function(socket) {
   });
 });
 
-server.listen(3000, function() {
+http.listen(3000, function() {
   console.log("listening on *:3000");
 });
