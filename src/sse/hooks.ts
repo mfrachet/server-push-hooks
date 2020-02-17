@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { SSEContext } from "./context";
 
-export const useLastSSE = () => {
+export const useLastSSE = (onOpen?: (e: Event) => void) => {
   const [data, setData] = useState(undefined);
   const [error, setError] = useState(undefined);
 
@@ -12,15 +12,46 @@ export const useLastSSE = () => {
       setData(JSON.parse(e.data));
     };
 
-    eventSource.onopen = () => {
-      // tslint:disable-next-line:no-console
-      console.log("Opened");
-    };
+    if (open) {
+      eventSource.onopen = onOpen;
+    }
 
     eventSource.onerror = e => {
       setError(e);
     };
-  }, []);
+
+    return () => eventSource.close();
+  }, [onOpen]);
 
   return { data, error };
+};
+
+export const useSSE = (
+  onMessage: (data: JSON) => void,
+  onOpen?: (e: Event) => void
+) => {
+  const [error, setError] = useState(undefined);
+  const onMessageRef = useRef(undefined);
+
+  onMessageRef.current = onMessage;
+
+  const eventSource = useContext(SSEContext);
+
+  useEffect(() => {
+    eventSource.onmessage = e => {
+      onMessageRef.current(JSON.parse(e.data));
+    };
+
+    if (open) {
+      eventSource.onopen = onOpen;
+    }
+
+    eventSource.onerror = e => {
+      setError(e);
+    };
+
+    return () => eventSource.close();
+  }, []);
+
+  return error;
 };

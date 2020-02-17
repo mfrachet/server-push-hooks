@@ -7,7 +7,8 @@ const startSocketIo = require("./socketio/socketio-server");
 const sseRequestHandler = require("./sse/sse-server");
 
 app.use(cors());
-app.get("/server-sent", sseRequestHandler);
+app.get("/last-sse", sseRequestHandler);
+app.get("/all-sse", sseRequestHandler);
 
 startSocketIo(io);
 

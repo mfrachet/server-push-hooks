@@ -1,4 +1,4 @@
-context("Socket.io", () => {
+context("Server sent event", () => {
   beforeEach(() => {
     cy.visit("http://localhost:1234/");
   });
@@ -11,15 +11,19 @@ context("Socket.io", () => {
     });
 
     it("should have 'Marvin' as first SSE message", () => {
-      cy.get("[data-cy=last-sse-message]")
-        .invoke("text")
-        .should("eq", "Marvin");
+      cy.get("[data-cy=last-sse-message]").should("contain", "Marvin");
     });
 
     it("should have 'Laetitia' as second SSE message", () => {
-      cy.get("[data-cy=last-sse-message]")
-        .invoke("text")
-        .should("eq", "Laetitia");
+      cy.get("[data-cy=last-sse-message]").should("contain", "Laetitia");
+    });
+  });
+
+  describe("All messages from SSE", () => {
+    it("should display all the names", () => {
+      cy.get("[data-cy=all-sse-messages]").should("contain", "Marvin");
+
+      cy.get("[data-cy=all-sse-messages]").should("contain", "Laetitia");
     });
   });
 });
