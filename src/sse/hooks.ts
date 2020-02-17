@@ -12,7 +12,7 @@ export const useLastSSE = (onOpen?: (e: Event) => void) => {
       setData(JSON.parse(e.data));
     };
 
-    if (open) {
+    if (onOpen) {
       eventSource.onopen = onOpen;
     }
 
@@ -42,7 +42,7 @@ export const useSSE = (
       onMessageRef.current(JSON.parse(e.data));
     };
 
-    if (open) {
+    if (onOpen) {
       eventSource.onopen = onOpen;
     }
 
