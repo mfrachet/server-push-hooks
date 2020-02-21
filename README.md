@@ -18,7 +18,7 @@ $ yarn add use-socketio
 Listen to a specific event and trigger the according callback everytime there's one. **This hooks doesn't trigger a rerender. You have to manage it yourself.**
 
 ```jsx
-import { SocketIOProvider, useSocket } from "use-socketio/io";
+import { SocketIOProvider, useSocket } from "use-socketio";
 
 const Twitter = () => {
   const [tweets, setTweet] = useState([]);
@@ -52,7 +52,7 @@ _The socketio options to pass to the provider are available here: https://socket
 Listen to the latest message received on a specific event name. **This hook triggers a rerender so you don't have to.**
 
 ```jsx
-import { SocketIOProvider, useLastMessage } from "use-socketio/io";
+import { SocketIOProvider, useLastMessage } from "use-socketio";
 
 const Twitter = () => {
   const { data: lastMessage, socket, subscribe, unsubscribe } = useLastMessage(
