@@ -9,13 +9,17 @@ export interface ISSEProviderProps {
 export const SSEProvider: React.FC<ISSEProviderProps> = ({
   url,
   opts,
-  children
+  children,
 }) => {
   if (!window) {
-    return null;
+    return <>{children}</>;
   }
 
-  const eventSourceRef = useRef(new EventSource(url, opts));
+  const eventSourceRef = useRef<EventSource>();
+
+  if (!eventSourceRef.current) {
+    eventSourceRef.current = new EventSource(url, opts);
+  }
 
   return (
     <SSEContext.Provider value={eventSourceRef.current}>

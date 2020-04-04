@@ -10,9 +10,13 @@ export interface ISocketIOProviderProps {
 export const SocketIOProvider: React.FC<ISocketIOProviderProps> = ({
   url,
   opts,
-  children
+  children,
 }) => {
-  const socketRef = useRef(io(url, opts || {}));
+  const socketRef = useRef<SocketIOClient.Socket>();
+
+  if (!socketRef.current) {
+    socketRef.current = io(url, opts || {});
+  }
 
   return (
     <SocketIOContext.Provider value={socketRef.current}>
