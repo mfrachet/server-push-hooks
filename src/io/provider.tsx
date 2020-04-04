@@ -12,6 +12,10 @@ export const SocketIOProvider: React.FC<ISocketIOProviderProps> = ({
   opts,
   children,
 }) => {
+  if (!window) {
+    return <>{children}</>;
+  }
+
   const socketRef = useRef<SocketIOClient.Socket>();
 
   if (!socketRef.current) {
