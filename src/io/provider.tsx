@@ -12,7 +12,7 @@ export const SocketIOProvider: React.FC<ISocketIOProviderProps> = ({
   opts,
   children,
 }) => {
-  if (!window) {
+  if (typeof window === 'undefined') {
     return <>{children}</>;
   }
 
