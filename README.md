@@ -78,5 +78,5 @@ To run the example locally, you have to:
 - clone the repo by running `$ git clone https://github.com/mfrachet/use-socketio`
 - installing the project dependencies by running `$ yarn install` inside the directory
 - In one terminal, run `$ yarn start:test-server`. This will start a nodejs server with a socketio server
-- In another terminal, run `$ yarn start`. This will start a web application interacting with the server
+- In another terminal, first run `$ yarn build` ,second run `$ yarn start`. This will start a web application interacting with the server
 - (Optionally) you can run the E2E test suites by opening another (a third) terminal and run `$ yarn e2e`

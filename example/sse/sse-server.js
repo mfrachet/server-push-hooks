@@ -5,13 +5,13 @@ const sseRequestHandler = (req, res) => {
 
   res.write(`data: ${JSON.stringify(firstData)}`);
   res.write("\n\n");
-
-  setTimeout(() => {
-    const secondData = { name: "Laetitia" };
-
+let count=0
+  setInterval(() => {
+    const secondData = { name: "Laetitia"+count };
+count++
     res.write(`data: ${JSON.stringify(secondData)}`);
     res.write("\n\n");
-  }, 500);
+  }, 2000);
 };
 
 module.exports = sseRequestHandler;
