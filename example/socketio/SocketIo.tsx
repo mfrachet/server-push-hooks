@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLastMessage, useSocket } from "../../lib/io";
+import { useLastMessage, useSocket } from "../../packages/use-socketio/lib";
 
 const LastMessage = () => {
   const [lastMessage, setLastMessage] = useState();
