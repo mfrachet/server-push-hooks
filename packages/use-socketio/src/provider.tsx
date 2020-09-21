@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import * as React from "react";
 import io from "socket.io-client";
 import { SocketIOContext } from "./context";
 
@@ -12,11 +12,11 @@ export const SocketIOProvider: React.FC<ISocketIOProviderProps> = ({
   opts,
   children,
 }) => {
-  if (typeof window === 'undefined') {
+  const socketRef = React.useRef<SocketIOClient.Socket>();
+
+  if (typeof window === "undefined") {
     return <>{children}</>;
   }
-
-  const socketRef = useRef<SocketIOClient.Socket>();
 
   if (!socketRef.current) {
     socketRef.current = io(url, opts || {});
