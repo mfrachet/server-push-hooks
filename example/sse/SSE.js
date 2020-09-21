@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLastSSE, useSSE } from "../../packages/use-sse/lib";
+import { useLastSSE, useSSE } from "../../packages/use-sse";
 
 export const LastSSEMessage = () => {
   const { data } = useLastSSE();

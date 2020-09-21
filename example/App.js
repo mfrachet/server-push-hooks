@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { SocketIOProvider } from "../packages/use-socketio/lib";
 import { SSEProvider } from "../packages/use-sse/lib";
 import { SocketIo } from "./socketio/SocketIo";
