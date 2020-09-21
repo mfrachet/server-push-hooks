@@ -11,7 +11,7 @@
     "check:lint": "lerna run check:lint",
     "start": "parcel example/index.html",
     "start:test-server": "node ./example/server",
-    "release": "yarn check:lint && yarn build && npm publish"
+    "release": "npm run check:lint && npm run build && lerna publish"
   },
   "devDependencies": {
     "cors": "^2.8.5",
