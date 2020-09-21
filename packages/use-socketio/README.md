@@ -12,7 +12,7 @@ $ yarn add use-socketio
 
 ### useSocket hook
 
-Listen to a specific event and trigger the according callback everytime there's one. **This hooks doesn't trigger a rerender. You have to manage it yourself.**
+Listen to a specific event and trigger the according callback every time there's one. **This hooks doesn't trigger a re-render. You have to manage it yourself.**
 
 ```jsx
 import { SocketIOProvider, useSocket } from "use-socketio";
@@ -46,7 +46,7 @@ _The socketio options to pass to the provider are available here: https://socket
 
 ### useLastMessage hook
 
-Listen to the latest message received on a specific event name. **This hook triggers a rerender so you don't have to.**
+Listen to the latest message received on a specific event name. **This hook triggers a re-render so you don't have to.**
 
 ```jsx
 import { SocketIOProvider, useLastMessage } from "use-socketio";
@@ -66,14 +66,6 @@ const App = () => (
 );
 ```
 
-# Running some code
+## Notes
 
-This project is built in typescript and provides an example of the hooks previously mentioned.
-
-To run the example locally, you have to:
-
-- clone the repo by running `$ git clone https://github.com/mfrachet/use-socketio`
-- installing the project dependencies by running `$ yarn install` inside the directory
-- In one terminal, run `$ yarn start:test-server`. This will start a nodejs server with a socketio server
-- In another terminal, run `$ yarn start`. This will start a web application interacting with the server
-- (Optionally) you can run the E2E test suites by opening another (a third) terminal and run `$ yarn e2e`
+For example on how to implement a Socket.io server, you can take a look at the [socket.io the example folder](../../example/socketio/socketio-server.js).
