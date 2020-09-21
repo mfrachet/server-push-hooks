@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/mfrachet/use-socketio.svg?branch=master)](https://travis-ci.org/mfrachet/use-socketio)
-[![Coverage Status](https://coveralls.io/repos/github/mfrachet/use-socketio/badge.svg?branch=master)](https://coveralls.io/github/mf
 
 React hooks for handling server-push technologies:
 
