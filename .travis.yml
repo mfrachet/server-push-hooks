@@ -12,6 +12,7 @@ cache:
 before_script:
   - yarn check:lint
 script:
+  - npm run build
   - npm start &
   - npm run start:test-server &
   - npm run e2e:ci
