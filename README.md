@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/mfrachet/use-socketio.svg?branch=master)](https://travis-ci.org/mfrachet/use-socketio)
 [![Coverage Status](https://coveralls.io/repos/github/mfrachet/use-socketio/badge.svg?branch=master)](https://coveralls.io/github/mf
 
-Hooks for handling server-push technologies:
+React hooks for handling server-push technologies:
 
 - [use-socketio](./packages/use-socketio/README.md) for [Socket.io](https://socket.io/)
 - [use-sse](./packages/use-sse/README.md) for [Server Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)

@@ -65,3 +65,7 @@ const App = () => (
   </SocketIOProvider>
 );
 ```
+
+## Notes
+
+For example on how to implement a Socket.io server, you can take a look at the [socket.io the example folder](../../example/socketio/socketio-server.js).

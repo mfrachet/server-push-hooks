@@ -15,7 +15,7 @@ $ yarn add use-sse
 Listen to a specific event and trigger the according callback every time there's one. **This hooks doesn't trigger a re-render. You have to manage it yourself.**
 
 ```jsx
-import { SSEProvider useSSE } from "use-sse";
+import { SSEProvider, useSSE } from "use-sse";
 
 const Parent = () => (
   <SSEProvider url="http://localhost:3000/last-sse">
@@ -25,7 +25,9 @@ const Parent = () => (
 
 const Children = () => {
   const [messages, setMessages] = useState([]);
-  const error = useSSE((nextMessage) => setMessages([...messages, nextMessage]));
+  const error = useSSE((nextMessage) =>
+    setMessages([...messages, nextMessage])
+  );
 
   return (
     <ul>
@@ -35,7 +37,6 @@ const Children = () => {
     </ul>
   );
 };
-
 ```
 
 ### useLastSSE hook
@@ -43,9 +44,21 @@ const Children = () => {
 Listen to the latest message received on a specific event name. **This hook triggers a re-render so you don't have to.**
 
 ```jsx
+import { SSEProvider, useLastSSE } from "use-sse";
+
+const Parent = () => (
+  <SSEProvider url="http://localhost:3000/sse">
+    <Children />
+  </SSEProvider>
+);
+
 const Children = () => {
   const { data, error } = useLastSSE();
 
   return <p>{data || "No message yet"}</p>;
 };
 ```
+
+## Notes
+
+For example on how to implement a Server Sent Event server, you can take a look at the [Server Sent Event example folder](../../example/sse/sse-server.js).
