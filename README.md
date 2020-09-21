@@ -4,7 +4,7 @@
 React hooks for handling server-push technologies:
 
 - [use-socketio](./packages/use-socketio/README.md) for [Socket.io](https://socket.io/)
-- [use-sse](./packages/use-sse/README.md) for [Server Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
+- [use-server-sent-events](./packages/use-server-sent-events/README.md) for [Server Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 
 ## Running samples
 

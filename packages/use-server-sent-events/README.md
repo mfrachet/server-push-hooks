@@ -5,7 +5,7 @@ Use [Server Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server
 ## Installation
 
 ```sh
-$ yarn add use-sse
+$ yarn add use-server-sent-events
 ```
 
 ## In your code
@@ -15,7 +15,7 @@ $ yarn add use-sse
 Listen to a specific event and trigger the according callback every time there's one. **This hooks doesn't trigger a re-render. You have to manage it yourself.**
 
 ```jsx
-import { SSEProvider, useSSE } from "use-sse";
+import { SSEProvider, useSSE } from "use-server-sent-events";
 
 const Parent = () => (
   <SSEProvider url="http://localhost:3000/last-sse">
@@ -44,7 +44,7 @@ const Children = () => {
 Listen to the latest message received on a specific event name. **This hook triggers a re-render so you don't have to.**
 
 ```jsx
-import { SSEProvider, useLastSSE } from "use-sse";
+import { SSEProvider, useLastSSE } from "use-server-sent-events";
 
 const Parent = () => (
   <SSEProvider url="http://localhost:3000/sse">
