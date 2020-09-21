@@ -1,6 +1,6 @@
 import React from "react";
-import { SocketIOProvider } from "../lib/io";
-import { SSEProvider } from "../lib/sse";
+import { SocketIOProvider } from "../packages/use-socketio";
+import { SSEProvider } from "../packages/use-sse";
 import { SocketIo } from "./socketio/SocketIo";
 import { AllSSEMessages, LastSSEMessage } from "./sse/SSE";
 

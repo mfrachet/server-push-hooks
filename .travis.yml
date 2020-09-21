@@ -10,8 +10,9 @@ cache:
   directories:
     - ~/.cache
 before_script:
-  - yarn check:lint
+  - npm run bootstrap
 script:
+  - npm run check:lint
   - npm run build
   - npm start &
   - npm run start:test-server &

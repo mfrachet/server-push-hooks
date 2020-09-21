@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLastSSE, useSSE } from "../../lib/sse";
+import { useLastSSE, useSSE } from "../../packages/use-sse";
 
 export const LastSSEMessage = () => {
   const { data } = useLastSSE();
@@ -15,7 +15,7 @@ export const LastSSEMessage = () => {
 export const AllSSEMessages = () => {
   const [names, setNames] = useState([]);
 
-  useSSE(nextName => setNames([...names, nextName]));
+  useSSE((nextName) => setNames([...names, nextName]));
 
   return (
     <section>

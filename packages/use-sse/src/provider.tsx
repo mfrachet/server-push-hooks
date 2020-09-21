@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import * as React from "react";
 import { SSEContext } from "./context";
 
 export interface ISSEProviderProps {
@@ -11,11 +11,11 @@ export const SSEProvider: React.FC<ISSEProviderProps> = ({
   opts,
   children,
 }) => {
+  const eventSourceRef = React.useRef<EventSource>();
+
   if (!window) {
     return <>{children}</>;
   }
-
-  const eventSourceRef = useRef<EventSource>();
 
   if (!eventSourceRef.current) {
     eventSourceRef.current = new EventSource(url, opts);

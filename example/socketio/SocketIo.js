@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLastMessage, useSocket } from "../../lib/io";
+import { useLastMessage, useSocket } from "../../packages/use-socketio";
 
 const LastMessage = () => {
   const [lastMessage, setLastMessage] = useState();
@@ -46,11 +46,11 @@ const LastMessage = () => {
 };
 
 const Message = () => {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState([]);
 
   const { socket, subscribe, unsubscribe } = useSocket(
     "new-message",
-    (newMessage: string) => setMessages([newMessage, ...messages])
+    (newMessage) => setMessages([newMessage, ...messages])
   );
 
   return (
@@ -76,7 +76,7 @@ const Message = () => {
         Ask the server to emit three new messages
       </button>
       <ul data-cy="messages">
-        {messages.map((message, index: number) => (
+        {messages.map((message, index) => (
           <li key={index}>{message}</li>
         ))}
       </ul>
