@@ -1,6 +1,6 @@
 {
   "name": "use-server-sent-events",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React hooks for https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events",
   "main": "./lib/index.js",
   "author": "Marvin Frachet <marvin.frachet@gmail.com>",
