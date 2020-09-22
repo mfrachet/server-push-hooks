@@ -6,10 +6,10 @@
   "author": "Marvin Frachet <marvin.frachet@gmail.com>",
   "license": "MIT",
   "private": false,
-  "homepage": "https://github.com/mfrachet/use-socketio",
+  "homepage": "https://github.com/mfrachet/server-push-hooks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mfrachet/use-socketio"
+    "url": "https://github.com/mfrachet/server-push-hooks"
   },
   "keywords": [
     "react",
