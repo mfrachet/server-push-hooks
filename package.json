@@ -11,7 +11,7 @@
     "check:lint": "lerna run check:lint",
     "start": "parcel example/index.html",
     "start:test-server": "node ./example/server",
-    "release": "npm run check:lint && npm run build && lerna publish"
+    "release": "npm i && npm run bootstrap && npm run check:lint && npm run build && lerna publish"
   },
   "devDependencies": {
     "@reach/router": "^1.3.4",
