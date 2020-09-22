@@ -1,13 +1,11 @@
 context("Server sent event", () => {
-  beforeEach(() => {
-    cy.visit("http://localhost:1234/");
-  });
-
   describe("Last message for SSE", () => {
+    beforeEach(() => {
+      cy.visit("http://localhost:1234/last-sse");
+    });
+
     it("should be an empty section at the beginning", () => {
-      cy.get("[data-cy=last-sse-message]")
-        .invoke("text")
-        .should("eq", "");
+      cy.get("[data-cy=last-sse-message]").invoke("text").should("eq", "");
     });
 
     it("should have 'Marvin' as first SSE message", () => {
@@ -20,6 +18,10 @@ context("Server sent event", () => {
   });
 
   describe("All messages from SSE", () => {
+    beforeEach(() => {
+      cy.visit("http://localhost:1234/all-sse");
+    });
+
     it("should display all the names", () => {
       cy.get("[data-cy=all-sse-messages]").should("contain", "Marvin");
 
