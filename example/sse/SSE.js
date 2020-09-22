@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { useLastSSE, useSSE } from "../../packages/use-server-sent-events";
+import {
+  useLastSSE,
+  useSSE,
+  SSEProvider,
+} from "../../packages/use-server-sent-events";
 
 export const LastSSEMessage = () => {
   const { data } = useLastSSE();
@@ -26,5 +30,21 @@ export const AllSSEMessages = () => {
         ))}
       </ul>
     </section>
+  );
+};
+
+export const LastSSEMessageExample = () => {
+  return (
+    <SSEProvider url="http://localhost:3000/last-sse">
+      <LastSSEMessage />
+    </SSEProvider>
+  );
+};
+
+export const AllSSEMessagesExample = () => {
+  return (
+    <SSEProvider url="http://localhost:3000/all-sse">
+      <AllSSEMessages />
+    </SSEProvider>
   );
 };

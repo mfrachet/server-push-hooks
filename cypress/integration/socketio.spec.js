@@ -1,13 +1,11 @@
 context("Socket.io", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:1234/");
+    cy.visit("http://localhost:1234/socket-io");
   });
 
   describe("Last message section", () => {
     it("should be an empty section at the beginning", () => {
-      cy.get("[data-cy=last-message]")
-        .invoke("text")
-        .should("eq", "");
+      cy.get("[data-cy=last-message]").invoke("text").should("eq", "");
     });
 
     it("should display a message in the last message section", () => {
@@ -52,9 +50,7 @@ context("Socket.io", () => {
     });
 
     it("should be an empty section at the beginning", () => {
-      cy.get("[data-cy=messages]")
-        .invoke("text")
-        .should("eq", "");
+      cy.get("[data-cy=messages]").invoke("text").should("eq", "");
     });
 
     it("should display 3 messages", () => {
@@ -85,30 +81,21 @@ context("Socket.io", () => {
       cy.get("[data-cy=add-three-messages]").click();
       cy.wait(100);
 
-      cy.get("[data-cy=messages]")
-        .children("li")
-        .its("length")
-        .should("eq", 3);
+      cy.get("[data-cy=messages]").children("li").its("length").should("eq", 3);
 
       cy.get("[data-cy=unsubscribe-messages").click();
 
       cy.get("[data-cy=add-three-messages]").click();
       cy.wait(100);
 
-      cy.get("[data-cy=messages]")
-        .children("li")
-        .its("length")
-        .should("eq", 3);
+      cy.get("[data-cy=messages]").children("li").its("length").should("eq", 3);
 
       cy.get("[data-cy=subscribe-messages").click();
 
       cy.get("[data-cy=add-three-messages]").click();
       cy.wait(100);
 
-      cy.get("[data-cy=messages]")
-        .children("li")
-        .its("length")
-        .should("eq", 6);
+      cy.get("[data-cy=messages]").children("li").its("length").should("eq", 6);
     });
   });
 });

@@ -18,7 +18,10 @@ Listen to a specific event and trigger the according callback every time there's
 import { SSEProvider, useSSE } from "use-server-sent-events";
 
 const Parent = () => (
-  <SSEProvider url="http://localhost:3000/last-sse">
+  <SSEProvider
+    url="http://localhost:3000/last-sse"
+    onOpen={() => console.log("connection opened")}
+  >
     <Children />
   </SSEProvider>
 );

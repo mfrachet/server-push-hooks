@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useLastMessage, useSocket } from "../../packages/use-socketio";
+import {
+  SocketIOProvider,
+  useLastMessage,
+  useSocket,
+} from "../../packages/use-socketio";
 
 const LastMessage = () => {
   const [lastMessage, setLastMessage] = useState();
@@ -84,9 +88,9 @@ const Message = () => {
   );
 };
 
-export const SocketIo = () => (
-  <div>
+export const SocketIoExample = () => (
+  <SocketIOProvider url="http://localhost:3000">
     <LastMessage />
     <Message />
-  </div>
+  </SocketIOProvider>
 );
