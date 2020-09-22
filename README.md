@@ -10,8 +10,8 @@ React hooks for handling server-push technologies:
 To run samples locally, you can:
 
 ```sh
-$ git clone https://github.com/mfrachet/use-socketio
-$ cd use-socketio
+$ git clone https://github.com/mfrachet/server-push-hooks
+$ cd server-push-hooks
 $ npm install # install lerna and dependencies at the root
 $ npm run bootstrap # install lerna packages dependencies
 $ npm run build # build the lerna packages
