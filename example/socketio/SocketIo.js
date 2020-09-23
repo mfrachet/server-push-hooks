@@ -4,6 +4,7 @@ import {
   useLastMessage,
   useSocket,
 } from "../../packages/use-socketio";
+import { port } from "./constants";
 
 const LastMessage = () => {
   const [lastMessage, setLastMessage] = useState();
@@ -89,7 +90,7 @@ const Message = () => {
 };
 
 export const SocketIoExample = () => (
-  <SocketIOProvider url="http://localhost:3000">
+  <SocketIOProvider url={`http://localhost:${port}`}>
     <LastMessage />
     <Message />
   </SocketIOProvider>

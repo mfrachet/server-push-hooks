@@ -1,3 +1,6 @@
+const createHttpServer = require("../server-helpers");
+const { port } = require("./constants");
+
 const sseRequestHandler = (req, res) => {
   res.set("Content-Type", "text/event-stream");
 
@@ -14,4 +17,15 @@ const sseRequestHandler = (req, res) => {
   }, 500);
 };
 
-module.exports = sseRequestHandler;
+const startSSEServer = () => {
+  const { server: sseServer, app: appSSE } = createHttpServer();
+
+  appSSE.get("/last-sse", sseRequestHandler);
+  appSSE.get("/all-sse", sseRequestHandler);
+
+  sseServer.listen(port, () => {
+    console.log(`[SSE] Started on port :${port}`);
+  });
+};
+
+module.exports = startSSEServer;

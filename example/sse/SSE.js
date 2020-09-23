@@ -4,6 +4,7 @@ import {
   useSSE,
   SSEProvider,
 } from "../../packages/use-server-sent-events";
+import { port } from "./constants";
 
 export const LastSSEMessage = () => {
   const { data } = useLastSSE();
@@ -35,7 +36,7 @@ export const AllSSEMessages = () => {
 
 export const LastSSEMessageExample = () => {
   return (
-    <SSEProvider url="http://localhost:3000/last-sse">
+    <SSEProvider url={`http://localhost:${port}/last-sse`}>
       <LastSSEMessage />
     </SSEProvider>
   );
@@ -43,7 +44,7 @@ export const LastSSEMessageExample = () => {
 
 export const AllSSEMessagesExample = () => {
   return (
-    <SSEProvider url="http://localhost:3000/all-sse">
+    <SSEProvider url={`http://localhost:${port}/all-sse`}>
       <AllSSEMessages />
     </SSEProvider>
   );
