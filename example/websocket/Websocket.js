@@ -51,7 +51,7 @@ export const WebsocketExample = () => {
 
   return (
     <WebSocketProvider
-      url="ws://localhost:3000/"
+      url="ws://localhost:3124/"
       onOpen={() => setIsOpened(true)}
     >
       <p>Connection is {isOpened ? "opened" : "closed"}.</p>

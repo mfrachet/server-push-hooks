@@ -1,4 +1,4 @@
-const startSocketIo = (io) => {
+const prepareSocketIoConnections = (io) => {
   io.on("connection", function (socket) {
     socket.on("one-last-message", () => {
       socket.emit("last-messages", "This is one new message");
@@ -18,4 +18,4 @@ const startSocketIo = (io) => {
   });
 };
 
-module.exports = startSocketIo;
+module.exports = prepareSocketIoConnections;

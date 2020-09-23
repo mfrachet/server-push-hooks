@@ -35,7 +35,7 @@ export const AllSSEMessages = () => {
 
 export const LastSSEMessageExample = () => {
   return (
-    <SSEProvider url="http://localhost:3000/last-sse">
+    <SSEProvider url="http://localhost:3123/last-sse">
       <LastSSEMessage />
     </SSEProvider>
   );
@@ -43,7 +43,7 @@ export const LastSSEMessageExample = () => {
 
 export const AllSSEMessagesExample = () => {
   return (
-    <SSEProvider url="http://localhost:3000/all-sse">
+    <SSEProvider url="http://localhost:3123/all-sse">
       <AllSSEMessages />
     </SSEProvider>
   );
