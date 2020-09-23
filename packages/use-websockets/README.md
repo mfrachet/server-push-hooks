@@ -5,7 +5,7 @@ Use [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
 ## Installation
 
 ```sh
-$ yarn add use-websocket
+$ yarn add use-websockets
 ```
 
 ## In your code
@@ -15,7 +15,7 @@ $ yarn add use-websocket
 Listen to a specific event and trigger the according callback every time there's one. **This hooks doesn't trigger a re-render. You have to manage it yourself.**
 
 ```jsx
-import { WebsocketProvider, useWebsocket } from "use-websocket";
+import { WebsocketProvider, useWebsocket } from "use-websockets";
 
 const Parent = () => (
   <WebsocketProvider
@@ -47,7 +47,7 @@ const Children = () => {
 Listen to the latest message received on a specific event name. **This hook triggers a re-render so you don't have to.**
 
 ```jsx
-import { WebsocketProvider, useLastWebsocketMessage } from "use-websocket";
+import { WebsocketProvider, useLastWebsocketMessage } from "use-websockets";
 
 const Parent = () => (
   <WebsocketProvider url="wss://localhost:3000/">

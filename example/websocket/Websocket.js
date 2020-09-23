@@ -3,7 +3,7 @@ import {
   WebSocketProvider,
   useWebsocket,
   useLastWebsocketMessage,
-} from "../../packages/use-websocket";
+} from "../../packages/use-websockets";
 import { port } from "./constants";
 
 const LastMessage = () => {
