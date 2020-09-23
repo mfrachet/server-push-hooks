@@ -49,8 +49,6 @@ export const WebsocketExample = () => {
     };
   }, []);
 
-  console.log("messages", messages);
-
   return (
     <section>
       <h2>Root</h2>

@@ -18,7 +18,6 @@ const startWebsocketServer = (server) => {
           sendMessage("three-last-messages", "One last message of three");
           sendMessage("three-last-messages", "Two last message of three");
           sendMessage("three-last-messages", "Three last message of three");
-
           break;
 
         case "all-messages":
