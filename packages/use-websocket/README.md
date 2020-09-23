@@ -28,7 +28,7 @@ const Parent = () => (
 
 const Children = () => {
   const [messages, setMessages] = useState([]);
-  const error = useWebsocket((nextMessage) =>
+  const { ws, error } = useWebsocket((nextMessage) =>
     setMessages([...messages, nextMessage])
   );
 
@@ -56,7 +56,7 @@ const Parent = () => (
 );
 
 const Children = () => {
-  const { data, error } = useLastWebsocketMessage();
+  const { data, error, ws } = useLastWebsocketMessage();
 
   return <p>{data || "No message yet"}</p>;
 };
