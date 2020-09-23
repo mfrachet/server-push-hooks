@@ -1,44 +1,44 @@
 import * as React from "react";
-import { SSEContext } from "./context";
+import { WebsocketContext } from "./context";
 
 export interface ISSEProviderProps {
   url: string;
-  opts?: EventSourceInit;
+  protocols?: string | string[];
   onOpen?: (ev: Event) => void;
 }
 
 export const SSEProvider: React.FC<ISSEProviderProps> = ({
   url,
-  opts,
+  protocols,
   children,
   onOpen,
 }) => {
-  const eventSourceRef = React.useRef<EventSource>();
+  const ws = React.useRef<WebSocket>();
   const onOpenRef = React.useRef<(ev: Event) => void>();
 
   if (!window) {
     return <>{children}</>;
   }
 
-  if (!eventSourceRef.current) {
-    eventSourceRef.current = new EventSource(url, opts);
+  if (!ws.current) {
+    ws.current = new WebSocket(url, protocols);
   }
 
   onOpenRef.current = onOpen;
 
   React.useEffect(() => {
     if (onOpenRef?.current) {
-      eventSourceRef.current.onopen = onOpenRef.current;
+      ws.current.onopen = onOpenRef.current;
     }
 
     return () => {
-      eventSourceRef?.current?.close();
+      ws?.current?.close();
     };
   }, []);
 
   return (
-    <SSEContext.Provider value={eventSourceRef.current}>
+    <WebsocketContext.Provider value={ws.current}>
       {children}
-    </SSEContext.Provider>
+    </WebsocketContext.Provider>
   );
 };

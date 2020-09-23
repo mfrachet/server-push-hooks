@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const SSEContext = createContext<EventSource>(undefined);
+export const WebsocketContext = createContext<WebSocket>(undefined);

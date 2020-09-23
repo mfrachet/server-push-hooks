@@ -1,42 +1,58 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { SSEContext } from "./context";
+import { WebsocketContext } from "./context";
 
-export const useLastSSE = () => {
+export const useLastWebsocketMessage = () => {
   const [data, setData] = useState(undefined);
   const [error, setError] = useState(undefined);
 
-  const eventSource = useContext(SSEContext);
+  const ws = useContext(WebsocketContext);
 
   useEffect(() => {
-    eventSource.onmessage = (e) => {
-      setData(JSON.parse(e.data));
+    ws.onmessage = (e) => {
+      let data;
+
+      try {
+        data = JSON.parse(e.data);
+      } catch {
+        data = e.data;
+      }
+
+      setData(data);
     };
 
-    eventSource.onerror = (e) => {
+    ws.onerror = (e) => {
       setError(e);
     };
   }, []);
 
-  return { data, error };
+  return { data, error, ws };
 };
 
-export const useSSE = (onMessage: (data: JSON) => void) => {
+export const useWebsocket = (onMessage: (data: JSON) => void) => {
   const [error, setError] = useState(undefined);
   const onMessageRef = useRef(undefined);
 
   onMessageRef.current = onMessage;
 
-  const eventSource = useContext(SSEContext);
+  const ws = useContext(WebsocketContext);
 
   useEffect(() => {
-    eventSource.onmessage = (e) => {
-      onMessageRef.current(JSON.parse(e.data));
+    ws.onmessage = (e) => {
+      let data;
+
+      try {
+        data = JSON.parse(e.data);
+      } catch {
+        data = e.data;
+      }
+
+      onMessageRef.current(data);
     };
 
-    eventSource.onerror = (e) => {
+    ws.onerror = (e) => {
       setError(e);
     };
   }, []);
 
-  return error;
+  return { error, ws };
 };

@@ -9,7 +9,15 @@ export const useLastSSE = () => {
 
   useEffect(() => {
     eventSource.onmessage = (e) => {
-      setData(JSON.parse(e.data));
+      let message;
+
+      try {
+        message = JSON.parse(e.data);
+      } catch {
+        message = e.data;
+      }
+
+      setData(message);
     };
 
     eventSource.onerror = (e) => {
@@ -30,7 +38,15 @@ export const useSSE = (onMessage: (data: JSON) => void) => {
 
   useEffect(() => {
     eventSource.onmessage = (e) => {
-      onMessageRef.current(JSON.parse(e.data));
+      let message;
+
+      try {
+        message = JSON.parse(e.data);
+      } catch {
+        message = e.data;
+      }
+
+      onMessageRef.current(message);
     };
 
     eventSource.onerror = (e) => {
