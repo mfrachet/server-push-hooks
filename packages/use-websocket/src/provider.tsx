@@ -1,13 +1,13 @@
 import * as React from "react";
 import { WebsocketContext } from "./context";
 
-export interface ISSEProviderProps {
+export interface IWebSocketProviderProps {
   url: string;
   protocols?: string | string[];
   onOpen?: (ev: Event) => void;
 }
 
-export const SSEProvider: React.FC<ISSEProviderProps> = ({
+export const WebSocketProvider: React.FC<IWebSocketProviderProps> = ({
   url,
   protocols,
   children,

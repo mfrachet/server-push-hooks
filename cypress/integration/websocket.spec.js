@@ -11,6 +11,10 @@ context("Socket.io", () => {
   });
 
   describe("Last message section", () => {
+    beforeEach(() => {
+      cy.contains("Switch to Last message").click();
+    });
+
     it("should be an empty section at the beginning", () => {
       cy.contains("No last messages").should("be.visible");
     });

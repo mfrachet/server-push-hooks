@@ -1,84 +1,66 @@
-import React, { useEffect } from "react";
+import React from "react";
+import {
+  WebSocketProvider,
+  useWebsocket,
+  useLastWebsocketMessage,
+} from "../../packages/use-websocket";
 
-export const WebsocketExample = () => {
-  const [isOpened, setIsOpened] = React.useState(false);
-  const [lastMessage, setLastMessage] = React.useState(null);
-  const [messages, setMessages] = React.useState([]);
-  const ws = React.useRef(new WebSocket("ws://localhost:3000/"));
-
-  const sendMessage = (type) => () => {
-    if (ws.current) {
-      ws.current.send(type);
-    }
-  };
-
-  const addMessage = (message) => {
-    setMessages([...messages, message]);
-  };
-
-  const handleChangeRef = React.useRef();
-
-  handleChangeRef.current = addMessage;
-
-  useEffect(() => {
-    ws.current.onopen = () => {
-      setIsOpened(true);
-    };
-
-    ws.current.onmessage = (ev) => {
-      let data;
-      try {
-        data = JSON.parse(ev.data);
-      } catch {
-        data = ev.data;
-      }
-
-      switch (data.type) {
-        case "one-last":
-          setLastMessage(data.message);
-          break;
-
-        case "three-last-messages":
-          setLastMessage(data.message);
-          break;
-
-        case "all-messages":
-          handleChangeRef.current(data.message);
-          break;
-      }
-    };
-  }, []);
+const LastMessage = () => {
+  const { data, ws } = useLastWebsocketMessage();
 
   return (
-    <section>
-      <h2>Root</h2>
-      Connection is {isOpened ? "opened" : "closed"}.
-      <button
-        onClick={() => {
-          setLastMessage(undefined);
-          setMessages([]);
-        }}
-      >
-        Clear all messages
-      </button>
+    <div>
       <h3>Last message</h3>
-      <button onClick={sendMessage("one-last")}>
+      <button onClick={() => ws.send("one-last")}>
         Ask for one last message
       </button>
-      <button onClick={sendMessage("three-last-messages")}>
+      <button onClick={() => ws.send("three-last-messages")}>
         Ask for three last messages
       </button>
-      {lastMessage || "No last messages"}
+      {data?.message || "No last messages"}
+    </div>
+  );
+};
+
+const AllMessages = () => {
+  const [messages, setMessages] = React.useState([]);
+  const { ws } = useWebsocket((d) => setMessages([...messages, d.message]));
+
+  return (
+    <div>
       <h3>All messages</h3>
-      <button onClick={sendMessage("all-messages")}>Ask for messages</button>
+
+      <button onClick={() => setMessages([])}>Clear all messages</button>
+      <button onClick={() => ws.send("all-messages")}>Ask for messages</button>
+
       {messages.length === 0 && <>No messages</>}
       {messages.length > 0 && (
         <ul>
-          {messages.map((msg) => (
-            <li key={msg}>{msg}</li>
+          {messages.map((msg, index) => (
+            <li key={index}>{msg}</li>
           ))}
         </ul>
       )}
-    </section>
+    </div>
+  );
+};
+
+export const WebsocketExample = () => {
+  const [isOpened, setIsOpened] = React.useState(false);
+  const [tab, setTab] = React.useState("all");
+
+  return (
+    <WebSocketProvider
+      url="ws://localhost:3000/"
+      onOpen={() => setIsOpened(true)}
+    >
+      <p>Connection is {isOpened ? "opened" : "closed"}.</p>
+
+      <button onClick={() => setTab("all")}>Switch to All message</button>
+      <button onClick={() => setTab("last")}>Switch to Last message</button>
+
+      {tab === "all" && <AllMessages />}
+      {tab !== "all" && <LastMessage />}
+    </WebSocketProvider>
   );
 };

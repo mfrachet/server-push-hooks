@@ -9,15 +9,15 @@ export const useLastWebsocketMessage = () => {
 
   useEffect(() => {
     ws.onmessage = (e) => {
-      let data;
+      let message;
 
       try {
-        data = JSON.parse(e.data);
+        message = JSON.parse(e.data);
       } catch {
-        data = e.data;
+        message = e.data;
       }
 
-      setData(data);
+      setData(message);
     };
 
     ws.onerror = (e) => {
@@ -38,15 +38,15 @@ export const useWebsocket = (onMessage: (data: JSON) => void) => {
 
   useEffect(() => {
     ws.onmessage = (e) => {
-      let data;
+      let message;
 
       try {
-        data = JSON.parse(e.data);
+        message = JSON.parse(e.data);
       } catch {
-        data = e.data;
+        message = e.data;
       }
 
-      onMessageRef.current(data);
+      onMessageRef.current(message);
     };
 
     ws.onerror = (e) => {
