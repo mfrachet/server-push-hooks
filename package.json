@@ -22,6 +22,7 @@
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "ws": "^7.3.1"
   }
 }

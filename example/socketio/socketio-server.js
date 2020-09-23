@@ -1,5 +1,5 @@
-const startSocketIo = io => {
-  io.on("connection", function(socket) {
+const startSocketIo = (io) => {
+  io.on("connection", function (socket) {
     socket.on("one-last-message", () => {
       socket.emit("last-messages", "This is one new message");
     });
