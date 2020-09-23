@@ -1,6 +1,8 @@
 const WebSocket = require("ws");
+const createHttpServer = require("../server-helpers");
 
-const startWebsocketServer = (server) => {
+const startWebsocketServer = () => {
+  const { server } = createHttpServer();
   const wss = new WebSocket.Server({ server });
 
   wss.on("connection", function connection(ws) {
@@ -29,6 +31,10 @@ const startWebsocketServer = (server) => {
     });
 
     ws.send("Opened from the server");
+  });
+
+  server.listen(3124, () => {
+    console.log(`[Websocket] Started on port 3124`);
   });
 };
 

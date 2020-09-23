@@ -1,4 +1,10 @@
-const prepareSocketIoConnections = (io) => {
+const socketIo = require("socket.io");
+const createHttpServer = require("../server-helpers");
+
+const startSocketIoServer = () => {
+  const { server: socketIoServer } = createHttpServer();
+  const io = socketIo(socketIoServer);
+
   io.on("connection", function (socket) {
     socket.on("one-last-message", () => {
       socket.emit("last-messages", "This is one new message");
@@ -16,6 +22,10 @@ const prepareSocketIoConnections = (io) => {
       socket.emit("new-message", "This is a third new message");
     });
   });
+
+  socketIoServer.listen(3000, () =>
+    console.log(`[Socket.io] Started on port 3000`)
+  );
 };
 
-module.exports = prepareSocketIoConnections;
+module.exports = startSocketIoServer;
