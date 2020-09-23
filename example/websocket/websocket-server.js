@@ -1,5 +1,6 @@
 const WebSocket = require("ws");
 const createHttpServer = require("../server-helpers");
+const { port } = require("./constants");
 
 const startWebsocketServer = () => {
   const { server } = createHttpServer();
@@ -33,8 +34,8 @@ const startWebsocketServer = () => {
     ws.send("Opened from the server");
   });
 
-  server.listen(3124, () => {
-    console.log(`[Websocket] Started on port 3124`);
+  server.listen(port, () => {
+    console.log(`[Websocket] Started on port :${port}`);
   });
 };
 

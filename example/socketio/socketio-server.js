@@ -1,5 +1,6 @@
 const socketIo = require("socket.io");
 const createHttpServer = require("../server-helpers");
+const { port } = require("./constants");
 
 const startSocketIoServer = () => {
   const { server: socketIoServer } = createHttpServer();
@@ -23,8 +24,8 @@ const startSocketIoServer = () => {
     });
   });
 
-  socketIoServer.listen(3000, () =>
-    console.log(`[Socket.io] Started on port 3000`)
+  socketIoServer.listen(port, () =>
+    console.log(`[Socket.io] Started on port :${port}`)
   );
 };
 

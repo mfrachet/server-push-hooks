@@ -4,6 +4,7 @@ import {
   useWebsocket,
   useLastWebsocketMessage,
 } from "../../packages/use-websocket";
+import { port } from "./constants";
 
 const LastMessage = () => {
   const { data, ws } = useLastWebsocketMessage();
@@ -51,7 +52,7 @@ export const WebsocketExample = () => {
 
   return (
     <WebSocketProvider
-      url="ws://localhost:3124/"
+      url={`ws://localhost:${port}/`}
       onOpen={() => setIsOpened(true)}
     >
       <p>Connection is {isOpened ? "opened" : "closed"}.</p>
