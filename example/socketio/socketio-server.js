@@ -4,7 +4,12 @@ const { port } = require("./constants");
 
 const startSocketIoServer = () => {
   const { server: socketIoServer } = createHttpServer();
-  const io = socketIo(socketIoServer);
+  const io = socketIo(socketIoServer, { 
+    cors: {
+      origin: "http://localhost:1234",
+      methods: ["GET", "POST"]
+    }
+  });
 
   io.on("connection", function (socket) {
     socket.on("one-last-message", () => {
