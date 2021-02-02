@@ -28,7 +28,7 @@ export const useLastWebsocketMessage = () => {
   return { data, error, ws };
 };
 
-export const useWebsocket = (onMessage: (data: JSON) => void) => {
+export const useWebsocket = (onMessage: (data: any) => void) => {
   const [error, setError] = useState(undefined);
   const onMessageRef = useRef(undefined);
 
