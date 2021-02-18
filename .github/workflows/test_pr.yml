@@ -15,13 +15,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
-      - name: restore lerna
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies 📦
         run: npm ci
       - name: Bootstrap 🥾
