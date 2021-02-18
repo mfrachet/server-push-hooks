@@ -9,7 +9,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-16.04
     steps:
-      - run: ls
+      - run: ls ~
       - name: Install libgconf-2-4
         run: sudo apt-get install libgconf-2-4 # Don't worry about passwords, sudo won't prompt for any, cuz there isn't a password here.
       - name: Setup Node.js v10 🎁
