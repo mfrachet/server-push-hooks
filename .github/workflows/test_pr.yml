@@ -9,13 +9,20 @@ jobs:
   cypress-run:
     runs-on: ubuntu-16.04
     steps:
-      - run: ls ~
       - name: Install libgconf-2-4
         run: sudo apt-get install libgconf-2-4 # Don't worry about passwords, sudo won't prompt for any, cuz there isn't a password here.
+      - uses: actions/checkout@v2
       - name: Setup Node.js v10 🎁
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
+      - name: restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies 📦
         run: npm ci
       - name: Bootstrap 🥾
