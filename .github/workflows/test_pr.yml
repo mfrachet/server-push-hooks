@@ -43,13 +43,11 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm start, npm run start:test-server
-      
-      - name: Zip cypress videos
-        run: 7z a cypress-videos.7z cypress/videos/*
+
       - name: Upload the videos
         uses: actions/upload-artifact@v2
         with:
           name: cypress-videos
-          path: cypress-videos.7z
+          path: cypress/videos/*
         
     
