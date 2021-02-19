@@ -2,13 +2,72 @@
 name: Node.js test
 on:
   pull_request:
-    branches: ['main']
+    branches: ["main"]
   workflow_dispatch: # just in case when you need to trigger the thing manually without pull requests
 
 jobs:
-  cypress-run:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js v10 🎁
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: Install dependencies 📦
+        run: npm ci
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Bootstrap 🥾
+        run: npm run bootstrap
+      - name: restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Build the hooks 🛠
+        run: npm run build
+
+  lint:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js v10 🎁
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: Install dependencies 📦
+        run: npm ci
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Bootstrap 🥾
+        run: npm run bootstrap
+      - name: restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Lint 🔍
+        run: npm run check:lint
+
+  test:
     runs-on: ubuntu-16.04
     continue-on-error: true
+    needs: [lint, build]
     steps:
       - name: Install libgconf-2-4
         run: sudo apt-get install libgconf-2-4 # Don't worry about passwords, sudo won't prompt for any, cuz there isn't a password here.
@@ -35,10 +94,7 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Lint 🔍
-        run: npm run check:lint
-      - name: Build the hooks 🛠
-        run: npm run build
+      
       - name: Test the hooks ✔
         uses: cypress-io/github-action@v2
         with:
@@ -49,5 +105,3 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos/*
-        
-    
