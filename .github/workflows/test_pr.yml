@@ -16,6 +16,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies 📦
+        run: npm ci
+      - name: Bootstrap 🥾
+        run: npm run bootstrap
       - name: restore lerna
         uses: actions/cache@v2
         with:
@@ -23,10 +34,6 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Install dependencies 📦
-        run: npm ci
-      - name: Bootstrap 🥾
-        run: npm run bootstrap
       - name: Lint 🔍
         run: npm run check:lint
       - name: Build the hooks 🛠
