@@ -16,6 +16,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
+      - name: Install dependencies 📦
+        run: npm ci
       - name: Setup cache
         uses: actions/cache@v2
         with:
@@ -23,8 +25,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install dependencies 📦
-        run: npm ci
       - name: Bootstrap 🥾
         run: npm run bootstrap
       - name: restore lerna
