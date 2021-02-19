@@ -8,6 +8,7 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
+    continue-on-error: true
     steps:
       - name: Install libgconf-2-4
         run: sudo apt-get install libgconf-2-4 # Don't worry about passwords, sudo won't prompt for any, cuz there isn't a password here.
@@ -38,8 +39,17 @@ jobs:
         run: npm run check:lint
       - name: Build the hooks 🛠
         run: npm run build
-      - name: Cypress run
+      - name: Test the hooks ✔
         uses: cypress-io/github-action@v2
         with:
           start: npm start, npm run start:test-server
+      
+      - name: Zip cypress videos
+        run: 7z a cypress-videos.7z cypress/videos/*
+      - name: Upload the videos
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-videos
+          path: cypress-videos.7z
+        
     
