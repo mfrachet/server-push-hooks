@@ -28,7 +28,7 @@ export const useLastWebsocketMessage = () => {
   return { data, error, ws };
 };
 
-export const useWebsocket = (onMessage: (data: any) => void) => {
+export const useWebsocket = <T extends unknown>(onMessage: (data: T) => void) => {
   const [error, setError] = useState(undefined);
   const onMessageRef = useRef(undefined);
 
@@ -37,13 +37,13 @@ export const useWebsocket = (onMessage: (data: any) => void) => {
   const ws = useContext(WebsocketContext);
 
   useEffect(() => {
-    ws.onmessage = (e) => {
+    ws.onmessage = (event) => {
       let message;
 
       try {
-        message = JSON.parse(e.data);
+        message = JSON.parse(event.data);
       } catch {
-        message = e.data;
+        message = event.data;
       }
 
       onMessageRef.current(message);
