@@ -14,7 +14,7 @@ jobs:
         os: [ubuntu-16.04, ubuntu-18.04, ubuntu-latest]
         node: [10.x, 12.x, 13.x, 14.x, 15.x]
       fail-fast: false
-    name: Cypress run with Nodev${{ matrix.node }} running on ${{ matrix.os }}
+    name: Node.js v${{ matrix.node }} on ${{ matrix.os }}
     steps:
       - name: Install libgconf-2-4
         run: sudo apt-get install libgconf-2-4 # Don't worry about passwords, sudo won't prompt for any, cuz there isn't a password here.
