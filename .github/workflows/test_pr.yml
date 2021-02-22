@@ -1,0 +1,53 @@
+# This workflow will run when a pull request event is triggered (push, open, whatever happens)
+name: Node.js test
+on:
+  pull_request:
+    branches: ['main']
+  workflow_dispatch: # just in case when you need to trigger the thing manually without pull requests
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-16.04
+    continue-on-error: true
+    steps:
+      - name: Install libgconf-2-4
+        run: sudo apt-get install libgconf-2-4 # Don't worry about passwords, sudo won't prompt for any, cuz there isn't a password here.
+      - uses: actions/checkout@v2
+      - name: Setup Node.js v10 🎁
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: Install dependencies 📦
+        run: npm ci
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Bootstrap 🥾
+        run: npm run bootstrap
+      - name: restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Lint 🔍
+        run: npm run check:lint
+      - name: Build the hooks 🛠
+        run: npm run build
+      - name: Test the hooks ✔
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start, npm run start:test-server
+
+      - name: Upload the videos
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-videos
+          path: cypress/videos/*
+        
+    
