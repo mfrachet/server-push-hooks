@@ -1,6 +1,6 @@
 {
   "name": "use-websockets",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "React hooks for https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
   "main": "./lib/index.js",
   "author": "Marvin Frachet <marvin.frachet@gmail.com>",
