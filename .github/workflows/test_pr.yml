@@ -1,4 +1,5 @@
-# This workflow will run whatever happens inside a pull request.
+# This workflow will run whatever happens inside a pull request and whenever there's a commit push on
+# the code.
 name: Node.js test
 on:
   push:
@@ -7,6 +8,7 @@ on:
       - "cypress/**/*.*"
       - "!LICENSE.md"
       - "!README.md"
+  pull_request:
   workflow_dispatch: # This is what allows us to run this workflow manually.
 
 jobs:
