@@ -2,25 +2,25 @@
 name: Node.js test
 on:
   pull_request:
-    branches: ['main']
+    branches: ['master']
   workflow_dispatch: # just in case when you need to trigger the thing manually without pull requests
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     continue-on-error: true
     steps:
       - name: Install libgconf-2-4
-        run: sudo apt-get install libgconf-2-4 # Don't worry about passwords, sudo won't prompt for any, cuz there isn't a password here.
-      - uses: actions/checkout@v2
-      - name: Setup Node.js v10 🎁
-        uses: actions/setup-node@v1
+        run: sudo apt-get install libgconf-2-4
+      - uses: actions/checkout@v3
+      - name: Setup Node.js v16 LTS 🎁
+        uses: actions/setup-node@v3
         with:
-          node-version: 10.x
+          node-version: 16
       - name: Install dependencies 📦
         run: npm ci
       - name: Setup cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -45,7 +45,7 @@ jobs:
           start: npm start, npm run start:test-server
 
       - name: Upload the videos
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-videos
           path: cypress/videos/*
