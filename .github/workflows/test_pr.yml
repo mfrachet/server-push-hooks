@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Bootstrap 🥾
-        run: npm run bootstrap
+        run: npx lerna bootstrap
       - name: restore lerna
         uses: actions/cache@v2
         with:
