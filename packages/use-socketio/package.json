@@ -1,6 +1,6 @@
 {
   "name": "use-socketio",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "React hooks for https://socket.io/",
   "main": "./lib/index.js",
   "author": "Marvin Frachet <marvin.frachet@gmail.com>",
