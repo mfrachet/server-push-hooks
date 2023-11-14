@@ -1,15 +1,18 @@
 {
-  "name": "use-socketio",
-  "version": "2.1.0",
+  "name": "@tomas2387/use-socketio",
+  "version": "3.0.0",
   "description": "React hooks for https://socket.io/",
   "main": "./lib/index.js",
   "author": "Marvin Frachet <marvin.frachet@gmail.com>",
+  "contributors": [
+    "Tomas Prado <tomas2387@gmail.com>"
+  ],
   "license": "MIT",
   "private": false,
-  "homepage": "https://github.com/mfrachet/server-push-hooks",
+  "homepage": "https://github.com/tomas2387/server-push-hooks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mfrachet/server-push-hooks"
+    "url": "https://github.com/tomas2387/server-push-hooks"
   },
   "keywords": [
     "react",
@@ -38,6 +41,6 @@
     "react": "^16.13.1"
   },
   "dependencies": {
-    "socket.io-client": "^3.0.3"
+    "socket.io-client": "^4.7.2"
   }
 }
