@@ -1,5 +1,5 @@
 {
-  "name": "@tomas2387/use-socketio",
+  "name": "use-socketio",
   "version": "3.0.0",
   "description": "React hooks for https://socket.io/",
   "main": "./lib/index.js",
