@@ -1,13 +1,11 @@
-Use [socket.io v3](https://socket.io/) with React, in hooks (React v16.8+).
-
-_If you want to use socket.io in v2, you might want to use the v2.0.4 of this package. The last commit related to the v2 version is [this one](https://github.com/mfrachet/server-push-hooks/tree/4636e16f6753c5a49a52b0091ec92fce44e9913b)._
+Use [socket.io v4](https://socket.io/) with React, in hooks (React v16.8+).
 
 # Usage
 
 ## Installation
 
 ```sh
-$ yarn add use-socketio
+$ yarn add @tomas2387/use-socketio
 ```
 
 ## In your code
