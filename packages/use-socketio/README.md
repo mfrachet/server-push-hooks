@@ -5,7 +5,7 @@ Use [socket.io v4](https://socket.io/) with React, in hooks (React v16.8+).
 ## Installation
 
 ```sh
-$ yarn add use-socketio
+$ yarn add @tomas2387/use-socketio
 ```
 
 ## In your code
