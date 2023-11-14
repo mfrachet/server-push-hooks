@@ -9,10 +9,10 @@
   ],
   "license": "MIT",
   "private": false,
-  "homepage": "https://github.com/tomas2387/server-push-hooks",
+  "homepage": "https://github.com/mfrachet/server-push-hooks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomas2387/server-push-hooks"
+    "url": "https://github.com/mfrachet/server-push-hooks"
   },
   "keywords": [
     "react",
